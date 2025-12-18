@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Desempenho - Atlanta</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos adicionais para a página da política de admissão */
+        .documento-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border: 4px solid #1a1a1a;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .documento-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #1a1a1a;
+        }
+        
+        .documento-header h1 {
+            color: #1a1a1a;
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .documento-header .doc-tag {
+            display: inline-block;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid #ffffff;
+            margin-top: 10px;
+        }
+        
+        .documento-imagem {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border: 3px solid #1a1a1a;
+        }
+        
+        .documento-imagem img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #1a1a1a;
+        }
+        
+        .documento-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-left: 5px solid #1a1a1a;
+        }
+        
+        .documento-info p {
+            color: #333333;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .botao-voltar {
+            display: inline-block;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 3px solid #ffffff;
+            margin-top: 30px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .botao-voltar:hover {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            border-color: #1a1a1a;
+        }
+        
+        .documento-conteudo {
+            margin-top: 30px;
+            line-height: 1.6;
+        }
+        
+        .documento-conteudo h3 {
+            color: #1a1a1a;
+            margin: 25px 0 15px 0;
+            font-size: 22px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 8px;
+        }
+        
+        .documento-conteudo p {
+            color: #333333;
+            margin-bottom: 15px;
+        }
+        
+        .documento-conteudo ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .documento-conteudo li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+            color: #333333;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .documento-conteudo li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #1a1a1a;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header com Novo Banner -->
+    <header class="header">
+        <div class="banner">
+            <div class="banner-content">
+                <div class="banner-left">
+                    <div class="banner-line line-1">
+                        <span class="banner-text large">JUNTOS</span>
+                    </div>
+                    <div class="banner-line line-2">
+                        <span class="banner-text large">SOMOS</span>
+                    </div>
+                </div>
+                
+                <div class="banner-center">
+                    <div class="company-name">
+                        <span class="company-text">ATLANTA</span>
+                    </div>
+                </div>
+                
+                <div class="banner-right">
+                    <div class="banner-line line-3">
+                    </div>
+                    <div class="banner-line line-4">
+                        <span class="banner-text">V8 - BRASIL</span>
+                    </div>
+                    <div class="banner-line line-5">
+                        <span class="banner-text">PRO EURO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Barra Lateral de Navegação (SIMPLIFICADA) -->
+        <nav class="sidebar">
+            <h2>NAVEGAÇÃO</h2>
+            
+            <div class="nav-section">
+                <div class="nav-title" style="cursor: default;">
+                    Avaliação de Desempenho
+                    <span class="arrow">▲</span>
+                </div>
+                <div class="nav-content" style="max-height: 500px;">
+                    <div class="nav-item active" style="cursor: default;">
+                        Documento Oficial
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="index.html" class="botao-voltar" style="width: 80%; text-align: center;">
+                    ← Voltar para Intranet
+                </a>
+            </div>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main class="content">
+            <div class="documento-container">
+                <div class="documento-header">
+                    <h1>Avaliação de Desempenho</h1>
+                    <p>Sistema de avaliação e acompanhamento do desempenho dos colaboradores.</p>
+                    <span class="doc-tag">DOCUMENTO OFICIAL</span>
+                </div>
+                
+                <div class="documento-conteudo">
+                    <h3>Objetivo</h3>
+                    <p>Estabelecer diretrizes e procedimentos para o sistema de avaliação de desempenho, visando o desenvolvimento contínuo dos colaboradores e alinhamento com os objetivos estratégicos da empresa.</p>
+                    
+                    <h3>Documento Oficial</h3>
+                    <p>Abaixo está a imagem do documento oficial da Avaliação de Desempenho:</p>
+                    
+                    <div class="documento-imagem">
+                        <!-- SUBSTITUA 'avaliacao_desempenho.jpg' pelo nome da sua imagem -->
+                        <img src="avaliacao_desempenho.jpg" alt="Avaliação de Desempenho - Documento Oficial">
+                        <p style="margin-top: 15px; color: #666666; font-style: italic;">
+                            Documento oficial da Avaliação de Desempenho
+                        </p>
+                    </div>
+                    
+                    <h3>Processo de Avaliação de Desempenho</h3>
+                    <ul>
+                        <li>Definição de metas e objetivos trimestrais</li>
+                        <li>Acompanhamento contínuo das atividades</li>
+                        <li>Avaliação formal trimestral</li>
+                        <li>Feedback estruturado entre gestor e colaborador</li>
+                        <li>Plano de Desenvolvimento Individual (PDI)</li>
+                        <li>Análise de competências técnicas e comportamentais</li>
+                        <li>Definição de ações de desenvolvimento</li>  
+                        <li>Acompanhamento do plano de desenvolvimento</li>
+                    </ul>
+                    
+                    <h3>Critérios de Avaliação</h3>
+                    <ul>
+                        <li><strong>Competências Técnicas:</strong> Conhecimento específico da função</li>
+                        <li><strong>Produtividade:</strong> Quantidade e qualidade do trabalho</li>
+                        <li><strong>Atitude:</strong> Comportamento e relacionamento interpessoal</li>
+                        <li><strong>Iniciativa:</strong> Proatividade e busca por melhorias</li>
+                        <li><strong>Trabalho em Equipe:</strong> Colaboração e apoio aos colegas</li>
+                        <li><strong>Cumprimento de Prazos:</strong> Pontualidade nas entregas</li>
+                        <li><strong>Adaptabilidade:</strong> Capacidade de lidar com mudanças</li>
+                        <li><strong>Alinhamento com Valores:</strong> Adesão aos princípios da empresa</li>
+                    </ul>
+                    
+                    <h3>Frequência das Avaliações</h3>
+                    <ul>
+                        <li><strong>Avaliação Trimestral:</strong> Formal, com documentação e feedback</li>
+                        <li><strong>Acompanhamento Mensal:</strong> Reuniões de acompanhamento</li>
+                        <li><strong>Avaliação Anual:</strong> Consolidação e planejamento para o próximo ano</li>
+                    </ul>
+                    
+                    <div class="documento-info">
+                        <p><strong>Documento:</strong> Política de Avaliação de Desempenho</p>
+                        <p><strong>Departamento:</strong> Recursos Humanos</p>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 40px;">
+                        <a href="index.html" class="botao-voltar">
+                            ← Voltar para Intranet
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Atlanta &copy; 2023 - Avaliação de Desempenho. Todos os direitos reservados.</p>
+        <p>JUNTOS SOMOS | V8 - BRASIL | EURO | ATLANTA</p>
+    </footer>
+
+    <script>
+        // Script para manter o layout consistente
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adicionar efeito de hover no botão de voltar
+            const botaoVoltar = document.querySelector('.botao-voltar');
+            if (botaoVoltar) {
+                botaoVoltar.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = '#ffffff';
+                    this.style.color = '#1a1a1a';
+                    this.style.borderColor = '#1a1a1a';
+                });
+                
+                botaoVoltar.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '#1a1a1a';
+                    this.style.color = '#ffffff';
+                    this.style.borderColor = '#ffffff';
+                });
+            }
+            
+            // Garantir que a seção da avaliação esteja expandida
+            const navContent = document.querySelector('.nav-content');
+            if (navContent) {
+                navContent.classList.add('expanded');
+            }
+        });
+    </script>
+</body>
+</html>

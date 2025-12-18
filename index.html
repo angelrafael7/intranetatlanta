@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet - Atlanta</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos para o banner com logo */
+        .banner-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .banner-logo-left {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-atlanta {
+            height: 80px;
+            width: auto;
+            max-width: 250px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+            transition: all 0.3s ease;
+        }
+        
+        .logo-atlanta:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+        }
+        
+        .banner-center-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .banner-text-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .banner-juntos-somos {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .banner-juntos-somos span {
+            font-size: 42px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .company-name-logo {
+            margin-top: 5px;
+        }
+        
+        .company-text-logo {
+            font-size: 58px;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 
+                2px 2px 0 #000,
+                3px 3px 0 #ffffff,
+                4px 4px 5px rgba(0, 0, 0, 0.5);
+            padding: 10px 30px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+            border-radius: 10px;
+            border: 3px solid #ffffff;
+            animation: bannerGlow 3s ease-in-out infinite;
+        }
+        
+        .banner-brands-right {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+        
+        .brand-text-item {
+            font-size: 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #ffffff;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-text-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Engrenagem de Configurações */
+        .settings-gear {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #1a1a1a;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .settings-gear:hover {
+            background-color: #ffffff;
+            transform: scale(1.1) rotate(30deg);
+        }
+        
+        .settings-gear:hover .gear-icon {
+            color: #1a1a1a;
+        }
+        
+        .gear-icon {
+            font-size: 30px;
+            color: #ffffff;
+            transition: all 0.5s ease;
+        }
+        
+        .gear-spin {
+            animation: spinGear 4s linear infinite;
+        }
+        
+        .settings-gear:hover .gear-spin {
+            animation: spinGear 1s linear infinite;
+        }
+        
+        /* Menu de Configurações */
+        .settings-menu {
+            position: fixed;
+            bottom: 100px;
+            right: 40px;
+            background-color: #ffffff;
+            border: 3px solid #1a1a1a;
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 999;
+            display: none;
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        .settings-menu.active {
+            display: block;
+        }
+        
+        .settings-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        
+        .settings-header h3 {
+            color: #1a1a1a;
+            font-size: 18px;
+            margin: 0;
+        }
+        
+        .settings-option {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #f8f8f8;
+            border: 2px solid #1a1a1a;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .settings-option:hover {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            transform: translateX(-5px);
+        }
+        
+        .settings-option:hover .option-icon {
+            color: #ffffff;
+        }
+        
+        .option-icon {
+            font-size: 20px;
+            color: #1a1a1a;
+            transition: all 0.3s ease;
+        }
+        
+        .settings-info {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #1a1a1a;
+        }
+        
+        .settings-info p {
+            margin: 5px 0;
+            font-size: 12px;
+            color: #333333;
+        }
+        
+        /* Estilo para informações de localização */
+        .location-info {
+            background-color: #e8f4fd;
+            border: 2px solid #1a1a1a;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .location-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d1e7ff;
+        }
+        
+        .location-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .location-icon {
+            font-size: 20px;
+            color: #1a1a1a;
+            min-width: 30px;
+        }
+        
+        .location-details {
+            flex: 1;
+        }
+        
+        .location-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+        
+        .location-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .map-link {
+            display: inline-block;
+            background-color: #1a1a1a;
+            color: white;
+            padding: 5px 10px;
+            font-size: 11px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 5px;
+            transition: all 0.3s;
+        }
+        
+        .map-link:hover {
+            background-color: #333333;
+            transform: translateY(-2px);
+        }
+        
+        /* Animações */
+        @keyframes bannerGlow {
+            0% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+            50% { text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.7); }
+            100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+        }
+        
+        @keyframes spinGear {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .logo-atlanta {
+                height: 70px;
+                max-width: 200px;
+            }
+            
+            .banner-juntos-somos span {
+                font-size: 36px;
+            }
+            
+            .company-text-logo {
+                font-size: 52px;
+            }
+            
+            .brand-text-item {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .banner-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .banner-logo-left {
+                order: 1;
+            }
+            
+            .banner-center-text {
+                order: 2;
+            }
+            
+            .banner-brands-right {
+                order: 3;
+                align-items: center;
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 10px;
+            }
+            
+            .logo-atlanta {
+                height: 60px;
+            }
+            
+            .banner-juntos-somos span {
+                font-size: 32px;
+            }
+            
+            .company-text-logo {
+                font-size: 46px;
+                padding: 8px 20px;
+            }
+            
+            .brand-text-item {
+                font-size: 22px;
+            }
+            
+            .settings-gear {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .gear-icon {
+                font-size: 25px;
+            }
+            
+            .settings-menu {
+                bottom: 80px;
+                right: 25px;
+                min-width: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo-atlanta {
+                height: 50px;
+            }
+            
+            .banner-juntos-somos span {
+                font-size: 28px;
+                letter-spacing: 2px;
+            }
+            
+            .company-text-logo {
+                font-size: 40px;
+                letter-spacing: 3px;
+                padding: 6px 15px;
+            }
+            
+            .brand-text-item {
+                font-size: 18px;
+                padding: 4px 10px;
+            }
+            
+            .banner-brands-right {
+                gap: 10px;
+            }
+            
+            .settings-gear {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .gear-icon {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .banner-juntos-somos {
+                flex-direction: column;
+                gap: 5px;
+                align-items: center;
+            }
+            
+            .banner-juntos-somos span {
+                font-size: 24px;
+            }
+            
+            .company-text-logo {
+                font-size: 34px;
+                letter-spacing: 2px;
+            }
+            
+            .banner-brands-right {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .brand-text-item {
+                font-size: 16px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .logo-atlanta {
+                height: 45px;
+            }
+            
+            .settings-menu {
+                right: 10px;
+                left: 10px;
+                min-width: auto;
+                max-width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header com Novo Banner com Logo -->
+    <header class="header">
+        <div class="banner">
+            <div class="banner-content">
+                <!-- Logo à esquerda -->
+                <div class="banner-logo-left">
+                    <!-- 
+                    Adicione sua logo da Atlanta aqui 
+                    Substitua "logo-atlanta.png" pelo caminho correto da sua logo
+                    -->
+                    <img src="logo-atlanta.png" alt="Logo Atlanta" class="logo-atlanta"
+                         onerror="this.onerror=null; this.style.display='none'; 
+                                  document.getElementById('logoPlaceholder').style.display='block';">
+                    
+                    <!-- Placeholder estilizado caso a logo não carregue -->
+                    <div id="logoPlaceholder" style="display: none;">
+                        <div style="
+                            width: 180px;
+                            height: 80px;
+                            background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+                            border: 3px solid #ffffff;
+                            border-radius: 10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: #000000;
+                            font-weight: 900;
+                            font-size: 20px;
+                            letter-spacing: 2px;
+                            text-transform: uppercase;
+                        ">
+                            ATLANTA
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Texto central -->
+                <div class="banner-center-text">
+                    <div class="banner-text-group">
+                        <div class="banner-juntos-somos">
+                            <span>JUNTOS</span>
+                            <span>SOMOS</span>
+                        </div>
+                        <div class="company-name-logo">
+                            <span class="company-text-logo">ATLANTA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Marcas à direita -->
+                <div class="banner-brands-right">
+                    <div class="brand-text-item">V8 - BRASIL</div>
+                    <div class="brand-text-item">PRO EURO</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Engrenagem de Configurações -->
+    <div class="settings-gear" id="settingsGear">
+        <div class="gear-icon gear-spin">⚙️</div>
+    </div>
+    
+    <!-- Menu de Configurações -->
+    <div class="settings-menu" id="settingsMenu">
+        <div class="settings-header">
+            <div class="gear-icon">⚙️</div>
+            <h3>Configurações do Sistema</h3>
+        </div>
+        
+        <div class="settings-option" onclick="showAccessDetails()">
+            <div class="option-icon">🔍</div>
+            <div>
+                <strong>Informações de Acesso</strong>
+                <div style="font-size: 12px; color: #666; margin-top: 3px;">
+                    Veja detalhes da sua sessão
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-option" onclick="showDeviceInfo()">
+            <div class="option-icon">💻</div>
+            <div>
+                <strong>Informações do Dispositivo</strong>
+                <div style="font-size: 12px; color: #666; margin-top: 3px;">
+                    Detalhes técnicos do seu equipamento
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-option" onclick="toggleNotifications()">
+            <div class="option-icon">🔔</div>
+            <div>
+                <strong>Notificações</strong>
+                <div style="font-size: 12px; color: #666; margin-top: 3px;">
+                    Gerenciar alertas do sistema
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-option" onclick="logout()" style="background-color: #ffe6e6; border-color: #ff4444;">
+            <div class="option-icon" style="color: #ff4444;">🚪</div>
+            <div>
+                <strong style="color: #ff4444;">Sair do Sistema</strong>
+                <div style="font-size: 12px; color: #ff4444; margin-top: 3px;">
+                    Encerrar sua sessão
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-info" id="sessionInfo">
+            <p><strong>Usuário:</strong> <span id="currentUserMenu">---</span></p>
+            <p><strong>Sessão:</strong> <span id="sessionTimeMenu">---</span></p>
+            <p><strong>Status:</strong> <span id="sessionStatusMenu" style="color: #4CAF50;">● Ativa</span></p>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Barra Lateral de Navegação -->
+        <nav class="sidebar">
+            <h2>NAVEGAÇÃO</h2>
+            
+            <div class="nav-section">
+                <div class="nav-title" data-section="organograma">
+                    Organograma
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="nav-content" id="organograma-nav">
+                    <div class="nav-item active" data-content="organograma">Estrutura Organizacional</div>
+                </div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title" data-section="processos">
+                    Processos Administrativos
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="nav-content" id="processos-nav">
+                    <div class="nav-item" data-content="rh">Recursos Humanos</div>
+                    <div class="nav-item" data-content="financeiro">Financeiro</div>
+                </div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title" data-section="conduta">
+                    Manual de Conduta e Ética
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="nav-content" id="conduta-nav">
+                    <div class="nav-item" data-content="conduta">Políticas e Diretrizes</div>
+                </div>
+            </div>
+
+            <!-- Informações do Usuário Logado -->
+            <div class="user-info" id="userInfo" style="
+                background-color: #2d2d2d;
+                padding: 20px;
+                margin-top: 30px;
+                border-top: 3px solid #ffffff;
+                display: none;
+            ">
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                ">
+                    <div style="
+                        width: 40px;
+                        height: 40px;
+                        background-color: #ffffff;
+                        color: #1a1a1a;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: bold;
+                        font-size: 18px;
+                    ">
+                        👤
+                    </div>
+                    <div>
+                        <div style="
+                            color: #ffffff;
+                            font-weight: 600;
+                            font-size: 14px;
+                        " id="userMatricula">
+                            Matrícula: ---
+                        </div>
+                        <div style="
+                            color: #cccccc;
+                            font-size: 12px;
+                        ">
+                            Colaborador
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main class="content">
+            <!-- Seção Organograma -->
+            <section class="content-section" id="organograma-content">
+                <h2 class="section-title">Organograma da Empresa</h2>
+                <p>Conheça a estrutura organizacional da Atlanta, com a hierarquia e responsabilidades de cada departamento.</p>
+                
+                <div class="org-chart">
+                    <div class="org-level">
+                        <div class="org-position ceo">
+                            <h4>CEO - Diretor Executivo</h4>
+                            <p><strong>Felipe</strong></p>
+                            <p>Direção geral e estratégia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="org-connector"></div>
+                    
+                    <div class="org-level departments">
+                        <div class="org-position">
+                            <h4>RH</h4>
+                            <p><strong>Ana Paula Silva</strong></p>
+                            <p>Recursos Humanos</p>
+                        </div>
+                        <div class="org-position">
+                            <h4>Financeiro</h4>
+                            <p><strong>Roberto Almeida</strong></p>
+                            <p>Contabilidade e Finanças</p>
+                        </div>
+                        <div class="org-position">
+                            <h4>Operações</h4>
+                            <p><strong>Fernando Costa</strong></p>
+                            <p>Produção e Logística</p>
+                        </div>
+                        <div class="org-position">
+                            <h4>Comercial</h4>
+                            <p><strong>Mariana Santos</strong></p>
+                            <p>Vendas e Marketing</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">Detalhes dos Departamentos</h3>
+                <div class="department-grid">
+                    <div class="department-card">
+                        <div class="dept-icon">👥</div>
+                        <h4>Recursos Humanos</h4>
+                        <p><strong>Equipe:</strong> 5 colaboradores</p>
+                        <p>Recrutamento, treinamento, folha de pagamento e benefícios</p>
+                    </div>
+                    
+                    <div class="department-card">
+                        <div class="dept-icon">💰</div>
+                        <h4>Financeiro</h4>
+                        <p><strong>Equipe:</strong> 6 colaboradores</p>
+                        <p>Contabilidade, controle orçamentário, fluxo de caixa</p>
+                    </div>
+                    
+                    <div class="department-card">
+                        <div class="dept-icon">⚙️</div>
+                        <h4>Operações</h4>
+                        <p><strong>Equipe:</strong> 60 colaboradores</p>
+                        <p>Produção, logística, qualidade e manutenção</p>
+                    </div>
+                    
+                    <div class="department-card">
+                        <div class="dept-icon">📈</div>
+                        <h4>Comercial</h4>
+                        <p><strong>Equipe:</strong> 40 colaboradores</p>
+                        <p>Vendas, relacionamento com clientes, expansão de mercado</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Processos Administrativos - RH -->
+            <section class="content-section" id="rh-content">
+                <h2 class="section-title">Processos Administrativos - Recursos Humanos</h2>
+                <p>Documentos e procedimentos relacionados à gestão de pessoas na Atlanta.</p>
+                
+                <div class="documents-container">
+                    <h3 class="section-subtitle">Documentos de RH</h3>
+                    <div class="doc-grid">
+                        <div class="doc-card">
+                            <div class="doc-icon">📄</div>
+                            <h4>Política de Admissão</h4>
+                            <p>Procedimentos para contratação e integração de novos colaboradores.</p>
+                            <span class="doc-tag">Documento Oficial</span>
+                        </div>
+                        
+                        <div class="doc-card">
+                            <div class="doc-icon">📄</div>
+                            <h4>Avaliação de Desempenho</h4>
+                            <p>Metodologia e periodicidade das avaliações de desempenho.</p>
+                            <span class="doc-tag">Documento Oficial</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="processes-container">
+                    <h3 class="section-subtitle">Processos Principais</h3>
+                    
+                    <div class="process-timeline">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Processo de Admissão</h4>
+                                <ul>
+                                    <li>Análise de currículos e triagem</li>
+                                    <li>Entrevistas com RH e gestor</li>
+                                    <li>Avaliação técnica (quando aplicável)</li>
+                                    <li>Check-up médico admissionais</li>
+                                    <li>Contratação e integração</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Avaliação de Desempenho</h4>
+                                <ul>
+                                    <li>Definição de metas trimestrais</li>
+                                    <li>Acompanhamento mensal</li>
+                                    <li>Avaliação formal trimestral</li>
+                                    <li>Feedback e plano de desenvolvimento</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Processos Administrativos - Financeiro -->
+            <section class="content-section" id="financeiro-content">
+                <h2 class="section-title">Processos Administrativos - Financeiro</h2>
+                <p>Documentos e procedimentos relacionados às finanças da empresa.</p>
+                
+                <div class="documents-container">
+                    <h3 class="section-subtitle">Documentos Financeiros</h3>
+                    <div class="doc-grid">
+                        
+                        <div class="doc-card">
+                            <div class="doc-icon">📊</div>
+                            <h4>Procedimentos Orçamentários</h4>
+                            <p>Processo de elaboração e acompanhamento do orçamento.</p>
+                            <span class="doc-tag">Financeiro</span>
+                        </div>
+                        
+                        <div class="doc-card">
+                            <div class="doc-icon">📊</div>
+                            <h4>Política de Investimentos</h4>
+                            <p>Diretrizes para aplicação de recursos financeiros.</p>
+                            <span class="doc-tag">Financeiro</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="processes-container">
+                    <h3 class="section-subtitle">Processos Principais</h3>
+                    
+                    <div class="process-timeline">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Procedimentos Orçamentários</h4>
+                                <ul>
+                                    <li>Planejamento e Diretrizes</li>
+                                    <li>Elaboração das Propostas Setoriais</li>
+                                    <li>Consolidação e Ajustes</li>
+                                    <li>Aprovação e Formalização</li>
+                                    <li>Acompanhamento e Revisão</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Política de Investimentos</h4>
+                                <ul>
+                                    <li>Análise de Necessidades</li>
+                                    <li>Avaliação de Opções</li>
+                                    <li>Análise de Riscos</li>
+                                    <li>Tomada de Decisão</li>
+                                    <li>Monitoramento e Revisão</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Manual de Conduta e Ética -->
+            <section class="content-section" id="conduta-content">
+                <h2 class="section-title">Manual de Conduta e Ética</h2>
+                <p>Diretrizes e políticas que orientam o comportamento esperado dos colaboradores da Atlanta.</p>
+                
+                <div class="principles-container">
+                    <h3 class="section-subtitle">Princípios Éticos da Empresa</h3>
+                    
+                    <div class="principles-grid">
+                        <div class="principle-card">
+                            <div class="principle-icon">⚖️</div>
+                            <h4>Integridade</h4>
+                            <p>Agir com honestidade em todas as situações, mantendo coerência entre palavras e ações.</p>
+                        </div>
+                        
+                        <div class="principle-card">
+                            <div class="principle-icon">🤝</div>
+                            <h4>Respeito</h4>
+                            <p>Valorizar a diversidade, tratar todos com dignidade e promover um ambiente inclusivo.</p>
+                        </div>
+                        
+                        <div class="principle-card">
+                            <div class="principle-icon">🔍</div>
+                            <h4>Transparência</h4>
+                            <p>Comunicar-se de forma clara e aberta, mantendo confidencialidade quando necessário.</p>
+                        </div>
+                        
+                        <div class="principle-card">
+                            <div class="principle-icon">🎯</div>
+                            <h4>Responsabilidade</h4>
+                            <p>Assumir as consequências de suas ações e decisões, agindo no melhor interesse da empresa.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="policies-container">
+                    <h3 class="section-subtitle">Políticas de Conduta</h3>
+                    
+                    <div class="policies-list">
+                        <div class="policy-item">
+                            <span class="policy-badge">01</span>
+                            <div class="policy-content">
+                                <h4>Uso de Recursos da Empresa</h4>
+                                <p>Os recursos da empresa (computadores, veículos, telefones) devem ser utilizados prioritariamente para fins profissionais.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="policy-item">
+                            <span class="policy-badge">02</span>
+                            <div class="policy-content">
+                                <h4>Conflito de Interesses</h4>
+                                <p>Colaboradores devem evitar situações onde interesses pessoais possam interferir com os interesses da empresa.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="policy-item">
+                            <span class="policy-badge">03</span>
+                            <div class="policy-content">
+                                <h4>Confidencialidade</h4>
+                                <p>Proteger informações sigilosas da empresa, clientes e colegas de trabalho.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="policy-item">
+                            <span class="policy-badge">04</span>
+                            <div class="policy-content">
+                                <h4>Relacionamento Profissional</h4>
+                                <p>Manter relacionamentos baseados no respeito mútuo, independente de cargo ou função.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-container">
+                    <h3 class="section-subtitle">Canais de Denúncia</h3>
+                    
+                    <div class="report-card">
+                        <div class="report-icon">📞</div>
+                        <div class="report-content">
+                            <h4>Comitê de Ética</h4>
+                            <div class="contact-info">
+                                <p><strong>Email:</strong> etica@atlanta.com.br</p>
+                                <p><strong>Telefone:</strong> (11) 3456-7890 (ramal 123)</p>
+                                <p><strong>Horário:</strong> Segunda a sexta, 9h às 17h</p>
+                            </div>
+                            <p class="report-note">As denúncias podem ser feitas de forma anônima e serão tratadas com absoluta confidencialidade.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Atlanta &copy; 2025 - Sistema de Intranet Corporativa. Todos os direitos reservados.</p>
+        <p>JUNTOS SOMOS | V8 - BRASIL | EURO | ATLANTA</p>
+        <p style="font-size: 12px; color: #cccccc; margin-top: 10px;" id="loginStatus">
+        </p>
+    </footer>
+
+    <!-- Modal para detalhes de acesso -->
+    <div id="accessModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+    ">
+        <div style="
+            background-color: white;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            border: 5px solid #1a1a1a;
+            max-height: 80vh;
+            overflow-y: auto;
+        ">
+            <h3 style="color: #1a1a1a; margin-bottom: 20px; border-bottom: 3px solid #1a1a1a; padding-bottom: 10px;">
+                Informações de Acesso
+            </h3>
+            <div id="accessDetails" style="margin-bottom: 30px;">
+                <!-- Detalhes serão preenchidos aqui -->
+            </div>
+            <button onclick="closeAccessModal()" style="
+                background-color: #1a1a1a;
+                color: white;
+                border: 2px solid #1a1a1a;
+                padding: 10px 30px;
+                cursor: pointer;
+                font-weight: bold;
+                width: 100%;
+                transition: all 0.3s;
+            " onmouseover="this.style.backgroundColor='white';this.style.color='#1a1a1a'"
+            onmouseout="this.style.backgroundColor='#1a1a1a';this.style.color='white'">
+                FECHAR
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal para informações do dispositivo -->
+    <div id="deviceModal" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+    ">
+        <div style="
+            background-color: white;
+            padding: 30px;
+            max-width: 700px;
+            width: 90%;
+            border: 5px solid #1a1a1a;
+            max-height: 80vh;
+            overflow-y: auto;
+        ">
+            <h3 style="color: #1a1a1a; margin-bottom: 20px; border-bottom: 3px solid #1a1a1a; padding-bottom: 10px;">
+                Informações do Dispositivo
+            </h3>
+            <div id="deviceDetails" style="margin-bottom: 30px;">
+                <!-- Detalhes serão preenchidos aqui -->
+            </div>
+            <button onclick="closeDeviceModal()" style="
+                background-color: #1a1a1a;
+                color: white;
+                border: 2px solid #1a1a1a;
+                padding: 10px 30px;
+                cursor: pointer;
+                font-weight: bold;
+                width: 100%;
+                transition: all 0.3s;
+            " onmouseover="this.style.backgroundColor='white';this.style.color='#1a1a1a'"
+            onmouseout="this.style.backgroundColor='#1a1a1a';this.style.color='white'">
+                FECHAR
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Sistema de autenticação integrado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se está logado
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const loginTime = localStorage.getItem('loginTime');
+            const userMatricula = localStorage.getItem('userMatricula');
+            
+            // Se não estiver logado, redirecionar para login
+            if (isLoggedIn !== 'true' || !loginTime) {
+                redirectToLogin();
+                return;
+            }
+            
+            // Verificar expiração da sessão (8 horas)
+            const loginDate = new Date(loginTime);
+            const currentDate = new Date();
+            const hoursDiff = Math.abs(currentDate - loginDate) / 36e5;
+            
+            if (hoursDiff > 8) {
+                logout();
+                return;
+            }
+            
+            // Mostrar informações do usuário
+            showUserInfo(userMatricula);
+            
+            // Atualizar informações no menu da engrenagem
+            updateSettingsMenu(userMatricula, loginTime);
+            
+            // Configurar auto-logout após 8 horas
+            setTimeout(() => {
+                logout();
+            }, 8 * 60 * 60 * 1000);
+            
+            // Configurar verificação periódica (a cada minuto)
+            setInterval(() => {
+                checkSessionValidity();
+            }, 60000);
+            
+            // Configurar eventos da engrenagem
+            setupSettingsGear();
+            
+            // Obter e armazenar IP real e localização assim que a página carregar
+            getIPWithLocation().then(data => {
+                if (data) {
+                    localStorage.setItem('ipData', JSON.stringify(data));
+                }
+            });
+        });
+        
+        function setupSettingsGear() {
+            const gear = document.getElementById('settingsGear');
+            const menu = document.getElementById('settingsMenu');
+            
+            // Abrir/fechar menu ao clicar na engrenagem
+            gear.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menu.classList.toggle('active');
+            });
+            
+            // Fechar menu ao clicar fora
+            document.addEventListener('click', function(e) {
+                if (!menu.contains(e.target) && !gear.contains(e.target)) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            // Fechar menu ao pressionar ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    menu.classList.remove('active');
+                }
+            });
+        }
+        
+        function updateSettingsMenu(matricula, loginTime) {
+            const currentUserElement = document.getElementById('currentUserMenu');
+            const sessionTimeElement = document.getElementById('sessionTimeMenu');
+            const sessionStatusElement = document.getElementById('sessionStatusMenu');
+            
+            if (currentUserElement) {
+                currentUserElement.textContent = matricula;
+            }
+            
+            if (sessionTimeElement && loginTime) {
+                const loginDate = new Date(loginTime);
+                sessionTimeElement.textContent = formatDateTime(loginDate);
+            }
+            
+            if (sessionStatusElement) {
+                // Verificar se a sessão está prestes a expirar
+                const loginDate = new Date(loginTime);
+                const currentDate = new Date();
+                const hoursDiff = Math.abs(currentDate - loginDate) / 36e5;
+                
+                if (hoursDiff > 7) {
+                    sessionStatusElement.innerHTML = '<span style="color: #ff9900;">⚠ Prestes a expirar</span>';
+                } else {
+                    sessionStatusElement.innerHTML = '<span style="color: #4CAF50;">● Ativa</span>';
+                }
+            }
+        }
+        
+        // FUNÇÃO PARA OBTER IP COM LOCALIZAÇÃO
+        async function getIPWithLocation() {
+            try {
+                // Tentar várias APIs públicas para obter o IP e localização
+                const apis = [
+                    'https://ipapi.co/json/',
+                    'https://ipinfo.io/json?token=test', // Remova ?token=test se tiver um token real
+                    'https://freegeoip.app/json/',
+                    'https://geolocation-db.com/json/'
+                ];
+                
+                for (const api of apis) {
+                    try {
+                        const response = await fetch(api, {
+                            method: 'GET',
+                            mode: 'cors',
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            
+                            // Extrair informações de localização
+                            const locationData = {
+                                ip: data.ip || data.IPv4 || data.query,
+                                city: data.city || data.city_name,
+                                region: data.region || data.region_name || data.state,
+                                country: data.country_name || data.country,
+                                countryCode: data.country_code || data.country_code_iso3,
+                                latitude: data.latitude,
+                                longitude: data.longitude,
+                                timezone: data.timezone || data.time_zone,
+                                isp: data.org || data.isp || data.asn,
+                                zip: data.postal || data.zip
+                            };
+                            
+                            // Verificar se temos dados suficientes
+                            if (locationData.ip && locationData.ip !== 'undefined') {
+                                console.log('Localização obtida com sucesso:', locationData);
+                                return locationData;
+                            }
+                        }
+                    } catch (apiError) {
+                        console.log(`API ${api} falhou, tentando próxima...`);
+                        continue;
+                    }
+                }
+                
+                // Se todas as APIs de localização falharem, tentar apenas IP
+                const ip = await getRealIP();
+                return {
+                    ip: ip,
+                    city: 'Não detectada',
+                    region: 'Não detectado',
+                    country: 'Não detectado',
+                    countryCode: 'N/A',
+                    latitude: null,
+                    longitude: null,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    isp: 'Não identificado',
+                    zip: 'N/A'
+                };
+                
+            } catch (error) {
+                console.error('Erro ao obter localização:', error);
+                return null;
+            }
+        }
+        
+        async function getRealIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.ip || 'Não detectado';
+                }
+            } catch (error) {
+                console.error('Erro ao obter IP:', error);
+                return 'Não detectado';
+            }
+        }
+        
+        // Obter dados armazenados ou buscar novos
+        async function getCurrentLocationData() {
+            // Verificar se já temos dados armazenados (válidos por 1 hora)
+            const storedData = localStorage.getItem('ipData');
+            const storedTime = localStorage.getItem('locationTimestamp');
+            
+            if (storedData && storedTime) {
+                const storedDate = new Date(storedTime);
+                const currentDate = new Date();
+                const hoursDiff = Math.abs(currentDate - storedDate) / 36e5;
+                
+                // Se os dados foram obtidos há menos de 1 hora, usar eles
+                if (hoursDiff < 1) {
+                    try {
+                        return JSON.parse(storedData);
+                    } catch (e) {
+                        // Se houver erro ao parsear, buscar novos dados
+                    }
+                }
+            }
+            
+            // Se não tem dados ou expirou, buscar novos
+            const newData = await getIPWithLocation();
+            if (newData && newData.ip && newData.ip !== 'Não detectado') {
+                localStorage.setItem('ipData', JSON.stringify(newData));
+                localStorage.setItem('locationTimestamp', new Date().toISOString());
+            }
+            
+            return newData || {
+                ip: 'Não detectado',
+                city: 'Não detectada',
+                region: 'Não detectado',
+                country: 'Não detectado',
+                countryCode: 'N/A',
+                latitude: null,
+                longitude: null,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                isp: 'Não identificado',
+                zip: 'N/A'
+            };
+        }
+        
+        function showDeviceInfo() {
+            const modal = document.getElementById('deviceModal');
+            const detailsDiv = document.getElementById('deviceDetails');
+            
+            // Obter informações do dispositivo
+            const deviceInfo = getCompleteDeviceInfo();
+            
+            // Buscar dados de localização
+            getCurrentLocationData().then(locationData => {
+                let detailsHTML = `
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: #1a1a1a; margin-bottom: 10px; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px;">
+                            📍 Localização de Acesso
+                        </h4>
+                        <div class="location-info">
+                            <div class="location-item">
+                                <div class="location-icon">🌐</div>
+                                <div class="location-details">
+                                    <div class="location-label">Endereço IP Público</div>
+                                    <div class="location-value">${locationData.ip}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="location-item">
+                                <div class="location-icon">🏙️</div>
+                                <div class="location-details">
+                                    <div class="location-label">Cidade / Estado</div>
+                                    <div class="location-value">${locationData.city}, ${locationData.region}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="location-item">
+                                <div class="location-icon">🇧🇷</div>
+                                <div class="location-details">
+                                    <div class="location-label">País</div>
+                                    <div class="location-value">${locationData.country} ${getCountryFlag(locationData.countryCode)}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="location-item">
+                                <div class="location-icon">🕐</div>
+                                <div class="location-details">
+                                    <div class="location-label">Fuso Horário</div>
+                                    <div class="location-value">${locationData.timezone}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="location-item">
+                                <div class="location-icon">🏢</div>
+                                <div class="location-details">
+                                    <div class="location-label">Provedor de Internet</div>
+                                    <div class="location-value">${locationData.isp}</div>
+                                </div>
+                            </div>
+                            
+                            ${locationData.latitude && locationData.longitude ? `
+                            <div style="text-align: center; margin-top: 15px;">
+                                <a href="https://www.google.com/maps?q=${locationData.latitude},${locationData.longitude}" 
+                                   target="_blank" class="map-link">
+                                    📍 Ver no Google Maps
+                                </a>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: #1a1a1a; margin-bottom: 10px; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px;">
+                            💻 Informações do Sistema
+                        </h4>
+                        <p><strong>Sistema Operacional:</strong> ${deviceInfo.os}</p>
+                        <p><strong>Navegador:</strong> ${deviceInfo.browser}</p>
+                        <p><strong>Versão do Navegador:</strong> ${deviceInfo.browserVersion}</p>
+                        <p><strong>User Agent:</strong> <small style="color: #666; display: block; margin-top: 5px; word-break: break-all; font-size: 11px;">${navigator.userAgent}</small></p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: #1a1a1a; margin-bottom: 10px; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px;">
+                            ⚙️ Informações de Hardware
+                        </h4>
+                        <p><strong>Resolução da Tela:</strong> ${window.screen.width} x ${window.screen.height}</p>
+                        <p><strong>Resolução Disponível:</strong> ${window.screen.availWidth} x ${window.screen.availHeight}</p>
+                        <p><strong>Profundidade de Cor:</strong> ${window.screen.colorDepth} bits</p>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background-color: #f8f8f8; border: 2px solid #1a1a1a;">
+                        <p style="font-size: 12px; color: #666666; margin-bottom: 10px;">
+                            <strong>ℹ️ Informações Técnicas:</strong><br>
+                            Localização baseada no IP público. Pode não ser exata (precisão de cidade/região).
+                        </p>
+                        <button onclick="refreshLocation()" style="
+                            background-color: #1a1a1a;
+                            color: white;
+                            border: 2px solid #1a1a1a;
+                            padding: 8px 15px;
+                            font-size: 12px;
+                            cursor: pointer;
+                            width: 100%;
+                            margin-top: 10px;
+                            transition: all 0.3s;
+                        " onmouseover="this.style.backgroundColor='white';this.style.color='#1a1a1a'"
+                        onmouseout="this.style.backgroundColor='#1a1a1a';this.style.color='white'">
+                            🔄 Atualizar Localização
+                        </button>
+                    </div>
+                `;
+                
+                detailsDiv.innerHTML = detailsHTML;
+                modal.style.display = 'flex';
+            });
+            
+            // Fechar menu da engrenagem
+            document.getElementById('settingsMenu').classList.remove('active');
+        }
+        
+        // Função para obter bandeira do país
+        function getCountryFlag(countryCode) {
+            if (!countryCode || countryCode === 'N/A') return '';
+            
+            // Converter código de país para emoji de bandeira
+            const codePoints = countryCode.toUpperCase()
+                .split('')
+                .map(char => 127397 + char.charCodeAt());
+            
+            try {
+                return String.fromCodePoint(...codePoints);
+            } catch (e) {
+                return '';
+            }
+        }
+        
+        function refreshLocation() {
+            // Limpar dados armazenados para forçar nova busca
+            localStorage.removeItem('ipData');
+            localStorage.removeItem('locationTimestamp');
+            
+            // Fechar modal atual
+            closeDeviceModal();
+            
+            // Mostrar mensagem de carregamento
+            setTimeout(() => {
+                showDeviceInfo();
+            }, 800);
+        }
+        
+        function getCompleteDeviceInfo() {
+            const userAgent = navigator.userAgent;
+            let os = 'Desconhecido';
+            let browser = 'Desconhecido';
+            let browserVersion = '';
+            
+            // Detectar sistema operacional
+            if (userAgent.indexOf('Win') !== -1) os = 'Windows';
+            if (userAgent.indexOf('Mac') !== -1) os = 'macOS';
+            if (userAgent.indexOf('Linux') !== -1) os = 'Linux';
+            if (userAgent.indexOf('Android') !== -1) os = 'Android';
+            if (userAgent.indexOf('like Mac') !== -1) os = 'iOS';
+            
+            // Detectar navegador
+            if (userAgent.indexOf('Firefox') !== -1) {
+                browser = 'Firefox';
+                browserVersion = userAgent.match(/Firefox\/(\d+\.\d+)/)?.[1] || '';
+            } else if (userAgent.indexOf('Chrome') !== -1 && userAgent.indexOf('Edg') === -1) {
+                browser = 'Chrome';
+                browserVersion = userAgent.match(/Chrome\/(\d+\.\d+)/)?.[1] || '';
+            } else if (userAgent.indexOf('Safari') !== -1 && userAgent.indexOf('Chrome') === -1) {
+                browser = 'Safari';
+                browserVersion = userAgent.match(/Version\/(\d+\.\d+)/)?.[1] || '';
+            } else if (userAgent.indexOf('Edg') !== -1) {
+                browser = 'Edge';
+                browserVersion = userAgent.match(/Edg\/(\d+\.\d+)/)?.[1] || '';
+            }
+            
+            return {
+                os: os,
+                browser: browser,
+                browserVersion: browserVersion,
+                deviceMemory: navigator.deviceMemory ? `${navigator.deviceMemory} GB` : null
+            };
+        }
+        
+        function closeDeviceModal() {
+            document.getElementById('deviceModal').style.display = 'none';
+        }
+        
+        function toggleNotifications() {
+            alert('Funcionalidade de notificações será implementada em breve!');
+            document.getElementById('settingsMenu').classList.remove('active');
+        }
+        
+        function redirectToLogin() {
+            localStorage.setItem('redirectAfterLogin', window.location.pathname);
+            window.location.href = 'login.html';
+        }
+        
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userMatricula');
+            localStorage.removeItem('loginTime');
+            localStorage.removeItem('lastAccess');
+            localStorage.removeItem('redirectAfterLogin');
+            window.location.href = 'login.html';
+        }
+        
+        function showUserInfo(matricula) {
+            const userInfo = document.getElementById('userInfo');
+            const userMatriculaSpan = document.getElementById('userMatricula');
+            
+            if (userInfo && userMatriculaSpan) {
+                userInfo.style.display = 'block';
+                userMatriculaSpan.textContent = `Matrícula: ${matricula}`;
+            }
+        }
+        
+        function checkSessionValidity() {
+            const loginTime = localStorage.getItem('loginTime');
+            if (!loginTime) return;
+            
+            const loginDate = new Date(loginTime);
+            const currentDate = new Date();
+            const hoursDiff = Math.abs(currentDate - loginDate) / 36e5;
+            
+            if (hoursDiff > 7.5 && hoursDiff <= 8) {
+                showSessionWarning();
+            }
+            
+            if (hoursDiff > 8) {
+                logout();
+            }
+            
+            updateSettingsMenu(localStorage.getItem('userMatricula'), loginTime);
+        }
+        
+        function showSessionWarning() {
+            let warningDiv = document.getElementById('sessionWarning');
+            
+            if (!warningDiv) {
+                warningDiv = document.createElement('div');
+                warningDiv.id = 'sessionWarning';
+                warningDiv.style.cssText = `
+                    position: fixed;
+                    bottom: 100px;
+                    right: 30px;
+                    background-color: #ff9900;
+                    color: #000000;
+                    padding: 15px 20px;
+                    border: 3px solid #000000;
+                    z-index: 1000;
+                    max-width: 300px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                    animation: slideIn 0.5s ease-out;
+                `;
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                document.body.appendChild(warningDiv);
+            }
+            
+            warningDiv.innerHTML = `
+                <div style="font-weight: bold; margin-bottom: 5px;">⚠️ AVISO DE SESSÃO</div>
+                <div style="font-size: 13px;">Sua sessão irá expirar em breve. Salve seu trabalho.</div>
+                <div style="margin-top: 10px; display: flex; gap: 10px;">
+                    <button onclick="renewSession()" style="
+                        background-color: #000000;
+                        color: white;
+                        border: none;
+                        padding: 5px 10px;
+                        font-size: 12px;
+                        cursor: pointer;
+                        flex: 1;
+                    ">MANTER CONECTADO</button>
+                    <button onclick="this.parentElement.parentElement.remove()" style="
+                        background-color: transparent;
+                        color: #000000;
+                        border: 1px solid #000000;
+                        padding: 5px 10px;
+                        font-size: 12px;
+                        cursor: pointer;
+                    ">✕</button>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                if (warningDiv.parentElement) {
+                    warningDiv.remove();
+                }
+            }, 30000);
+        }
+        
+        function renewSession() {
+            localStorage.setItem('loginTime', new Date().toISOString());
+            
+            const warningDiv = document.getElementById('sessionWarning');
+            if (warningDiv) {
+                warningDiv.remove();
+            }
+            
+            alert('Sessão renovada com sucesso!');
+            updateSettingsMenu(localStorage.getItem('userMatricula'), localStorage.getItem('loginTime'));
+        }
+        
+        function showAccessDetails() {
+            const modal = document.getElementById('accessModal');
+            const detailsDiv = document.getElementById('accessDetails');
+            
+            const matricula = localStorage.getItem('userMatricula') || 'Não informada';
+            const loginTime = localStorage.getItem('loginTime');
+            const lastAccess = localStorage.getItem('lastAccess');
+            
+            // Buscar dados de localização
+            getCurrentLocationData().then(locationData => {
+                let detailsHTML = `
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: #1a1a1a; margin-bottom: 10px; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px;">
+                            📋 Informações da Sessão
+                        </h4>
+                        <p><strong>Matrícula:</strong> ${matricula}</p>
+                        <p><strong>Sessão iniciada:</strong> ${loginTime ? formatDateTime(new Date(loginTime)) : 'Não registrada'}</p>
+                        <p><strong>Último acesso:</strong> ${lastAccess ? formatDateTime(new Date(lastAccess)) : 'Não registrado'}</p>
+                        <p><strong>Tempo de sessão:</strong> ${calculateSessionDuration(loginTime)}</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: #1a1a1a; margin-bottom: 10px; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px;">
+                            📍 Localização de Acesso
+                        </h4>
+                        <div style="background-color: #f0f0f0; padding: 15px; border-radius: 8px; border-left: 4px solid #1a1a1a;">
+                            <p><strong>IP Público:</strong> ${locationData.ip}</p>
+                            <p><strong>Localização:</strong> ${locationData.city}, ${locationData.region} - ${locationData.country}</p>
+                            <p><strong>Provedor:</strong> ${locationData.isp}</p>
+                            <p><strong>Fuso Horário:</strong> ${locationData.timezone}</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: #1a1a1a; margin-bottom: 10px; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px;">
+                            💻 Informações do Sistema
+                        </h4>
+                        <p><strong>Navegador:</strong> ${navigator.userAgent.split(') ')[0].split('(')[1]}</p>
+                        <p><strong>Sistema operacional:</strong> ${navigator.platform}</p>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 10px; background-color: #f0f0f0; border-left: 3px solid #1a1a1a;">
+                        <p style="font-size: 12px; color: #666666;">
+                            <strong>⚠️ Informações de segurança:</strong><br>
+                            Esta sessão expirará automaticamente após 8 horas de inatividade.
+                            Localização baseada no IP público (precisão de cidade/região).
+                        </p>
+                    </div>
+                `;
+                
+                detailsDiv.innerHTML = detailsHTML;
+                modal.style.display = 'flex';
+            });
+            
+            document.getElementById('settingsMenu').classList.remove('active');
+        }
+        
+        function closeAccessModal() {
+            document.getElementById('accessModal').style.display = 'none';
+        }
+        
+        function calculateSessionDuration(loginTime) {
+            if (!loginTime) return 'Não disponível';
+            
+            const start = new Date(loginTime);
+            const now = new Date();
+            const diffMs = now - start;
+            
+            const hours = Math.floor(diffMs / (1000 * 60 * 60));
+            const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+            
+            return `${hours}h ${minutes}m ${seconds}s`;
+        }
+        
+        function formatDateTime(date) {
+            return date.toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+        
+        // Fechar modais ao clicar fora
+        document.getElementById('accessModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAccessModal();
+            }
+        });
+        
+        document.getElementById('deviceModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDeviceModal();
+            }
+        });
+        
+        // Fechar modais com ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAccessModal();
+                closeDeviceModal();
+                document.getElementById('settingsMenu').classList.remove('active');
+            }
+        });
+        
+        // Tornar funções disponíveis globalmente
+        window.logout = logout;
+        window.showAccessDetails = showAccessDetails;
+        window.closeAccessModal = closeAccessModal;
+        window.renewSession = renewSession;
+        window.showDeviceInfo = showDeviceInfo;
+        window.closeDeviceModal = closeDeviceModal;
+        window.toggleNotifications = toggleNotifications;
+        window.refreshLocation = refreshLocation;
+    </script>
+</body>
+</html>

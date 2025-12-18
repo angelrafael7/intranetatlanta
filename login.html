@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Intranet Atlanta</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .login-header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 5px solid #ffffff;
+        }
+
+        .login-header h1 {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .login-header p {
+            font-size: 14px;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        .login-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
+
+        .login-content {
+            padding: 40px 30px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            padding: 14px 18px;
+            border: 3px solid #1a1a1a;
+            border-radius: 0;
+            font-size: 16px;
+            transition: all 0.3s;
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #000000;
+            background-color: #f8f8f8;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-button {
+            background-color: #000000;
+            color: #ffffff;
+            border: 3px solid #ffffff;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-button:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #000000;
+        }
+
+        .login-button:active {
+            transform: scale(0.98);
+        }
+
+        .error-message {
+            background-color: #ffe6e6;
+            color: #cc0000;
+            padding: 12px;
+            border: 2px solid #cc0000;
+            border-radius: 0;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .login-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            text-align: center;
+            color: #666666;
+            font-size: 13px;
+        }
+
+        .login-footer p {
+            margin-bottom: 5px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #ffffff;
+            border-top: 5px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .login-container {
+                max-width: 100%;
+            }
+            
+            .login-content {
+                padding: 30px 20px;
+            }
+            
+            .login-header {
+                padding: 20px 15px;
+            }
+            
+            .login-header h1 {
+                font-size: 24px;
+            }
+        }
+
+        .access-code {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border: 2px solid #1a1a1a;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .access-code h4 {
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .access-code ul {
+            list-style-type: none;
+            padding-left: 15px;
+        }
+
+        .access-code li {
+            margin-bottom: 5px;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        .access-code li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="login-header">
+            <!-- Você pode adicionar um logo aqui se quiser -->
+            <div style="font-size: 40px; margin-bottom: 10px;"><img src="logo-atlanta.png" alt="Logo Atlanta" class="logo-atlanta"></div>
+            <h1>INTRANET ATLANTA</h1>
+            <p>SISTEMA CORPORATIVO RESTRITO</p>
+        </div>
+        
+        <div class="login-content">
+            <form class="login-form" id="loginForm">
+                <div class="error-message" id="errorMessage">
+                    Matrícula ou senha incorretos. Tente novamente.
+                </div>
+                
+                <div class="form-group">
+                    <label for="matricula">MATRÍCULA</label>
+                    <input 
+                        type="text" 
+                        id="matricula" 
+                        class="form-input" 
+                        placeholder="Digite sua matrícula" 
+                        required
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="senha">SENHA</label>
+                    <input 
+                        type="password" 
+                        id="senha" 
+                        class="form-input" 
+                        placeholder="Digite sua senha" 
+                        required
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <button type="submit" class="login-button" id="loginButton">
+                    ACESSAR INTRANET
+                </button>
+            </form>
+
+            <div class="access-code">
+            </div>
+            
+            <div class="login-footer">
+                <p>© 2025 Atlanta - Sistema Interno</p>
+                <p>Uso restrito a colaboradores autorizados</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const errorMessage = document.getElementById('errorMessage');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            
+            // Credenciais válidas (em produção, isso deve ser validado no servidor)
+            const validCredentials = [
+                { matricula: '180000', senha: 'INTRANETATLANTA' },
+                // Adicione mais usuários conforme necessário
+                // { matricula: 'admin', senha: 'admin123' },
+                // { matricula: 'rh001', senha: 'rh@atlanta' },
+                // { matricula: 'financeiro001', senha: 'fin@atlanta' }
+            ];
+            
+            // Verificar se já está logado
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                redirectToIntranet();
+            }
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const matricula = document.getElementById('matricula').value.trim();
+                const senha = document.getElementById('senha').value;
+                
+                // Validação básica
+                if (!matricula || !senha) {
+                    showError('Por favor, preencha todos os campos.');
+                    return;
+                }
+                
+                // Mostrar loading
+                loadingOverlay.style.display = 'flex';
+                
+                // Simular validação (em produção, faça uma requisição AJAX para o servidor)
+                setTimeout(() => {
+                    const isValid = validCredentials.some(cred => 
+                        cred.matricula === matricula && cred.senha === senha
+                    );
+                    
+                    if (isValid) {
+                        // Salvar sessão
+                        localStorage.setItem('isLoggedIn', 'true');
+                        localStorage.setItem('userMatricula', matricula);
+                        localStorage.setItem('loginTime', new Date().toISOString());
+                        
+                        // Redirecionar para intranet
+                        redirectToIntranet();
+                    } else {
+                        // Esconder loading
+                        loadingOverlay.style.display = 'none';
+                        
+                        // Mostrar erro
+                        showError('Matrícula ou senha incorretos. Tente novamente.');
+                        
+                        // Limpar campo de senha
+                        document.getElementById('senha').value = '';
+                        
+                        // Dar foco no campo de senha
+                        document.getElementById('senha').focus();
+                    }
+                }, 1000); // Simular delay de validação
+            });
+            
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                
+                // Remover a mensagem de erro após 5 segundos
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }
+            
+            function redirectToIntranet() {
+                // Verificar se há uma página de destino específica (útil para redirecionar após login)
+                const redirectTo = localStorage.getItem('redirectAfterLogin') || 'index.html';
+                
+                // Limpar o redirecionamento
+                localStorage.removeItem('redirectAfterLogin');
+                
+                // Redirecionar
+                window.location.href = redirectTo;
+            }
+            
+            // Adicionar efeitos visuais nos inputs
+            const inputs = document.querySelectorAll('.form-input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'translateY(-2px)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
